@@ -1,8 +1,10 @@
-import { generateField } from '../../utils/generateNewGame';
+import { generateField } from '../../utils/generateField';
+import { generateRandomCell } from '../../utils/generateRandomCell';
 import { gameActionTypes } from './actionTypes';
 
 const initialState = {
-    cells: generateField()
+    cells: generateField(),
+    startCell: generateRandomCell()
 };
 
 export const gameReducer = (state = initialState, action) => {

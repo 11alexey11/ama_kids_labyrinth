@@ -53,4 +53,9 @@ export class Cell {
 
         return null;
     }
+
+    generateNeighboringCells() {
+        const neighboringCells = [this.generateTopCell(), this.generateRightCell(), this.generateBottomCell(), this.generateLeftCell()];
+        return neighboringCells.filter((neighboringCell) => neighboringCell);
+    }
 }

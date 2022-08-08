@@ -21,9 +21,9 @@
   "homepage": "https://github.com/11alexey11/ama_kids_labyrinth#readme",
   "devDependencies": {
     "@babel/core": "^7.18.10",
+    "@babel/eslint-parser": "^7.5.4",
     "@babel/preset-env": "^7.18.10",
     "@babel/preset-react": "^7.18.6",
-    "@babel/eslint-parser": "^7.5.4",
     "babel-loader": "^8.2.5",
     "clean-webpack-plugin": "^4.0.0",
     "cross-env": "^7.0.3",
@@ -32,6 +32,7 @@
     "eslint-loader": "^4.0.2",
     "eslint-plugin-react": "^7.30.1",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.6.1",
     "optimize-css-assets-webpack-plugin": "^6.0.1",

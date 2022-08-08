@@ -1,9 +1,17 @@
 @import '../../common/variables.scss';
 
 .cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 10rem;
     height: 10rem;
     margin: 0.25rem;
     border-radius: 1rem;
     background-color: $purple;
+
+    &__start {
+        width: 5rem;
+        height: 3rem;
+    }
 }
