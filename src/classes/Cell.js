@@ -1,3 +1,4 @@
+import { direction } from '../constants/direction';
 import { fieldSize } from '../constants/fieldSize';
 
 export class Cell {
@@ -57,5 +58,28 @@ export class Cell {
     generateNeighboringCells() {
         const neighboringCells = [this.generateTopCell(), this.generateRightCell(), this.generateBottomCell(), this.generateLeftCell()];
         return neighboringCells.filter((neighboringCell) => neighboringCell);
+    }
+
+    defineDirectionNeighboringCell(neighboringCell) {
+        const diffX = neighboringCell.x - this.x;
+        const diffY = neighboringCell.y - this.y;
+
+        console.log(this, neighboringCell)
+
+        if (diffX === 0 && diffY === 1) {
+            return direction.right;
+        } else
+
+        if (diffX === 0 && diffY === -1) {
+            return direction.left;
+        }
+
+        if (diffX === 1 && diffY === 0) {
+            return direction.bottom;
+        }
+
+        if (diffX === -1 && diffY === 0) {
+            return direction.top;
+        }
     }
 }

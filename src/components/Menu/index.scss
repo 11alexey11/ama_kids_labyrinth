@@ -1,0 +1,43 @@
+@import '../../common/variables.scss';
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__labyrinth {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 2rem 0 1rem 0;
+
+        &__cell {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 5rem;
+            height: 5rem;
+            margin: 0.25rem;
+            border-radius: 0.25rem;
+
+            &.left {
+                background: url('../../assets/left.png') no-repeat no-repeat center center $blue;
+                background-size: 3rem 3rem;
+            }
+
+            &.right {
+                background: url('../../assets/right.png') no-repeat no-repeat center center $blue;
+                background-size: 3rem 3rem;
+            }
+
+            &.top {
+                background: url('../../assets/top.png') no-repeat no-repeat center center $blue;
+                background-size: 3rem 3rem;
+            }
+
+            &.bottom {
+                background: url('../../assets/bottom.png') no-repeat no-repeat center center $blue;
+                background-size: 3rem 3rem;
+            }
+        }
+    }
+}
