@@ -16,8 +16,13 @@ const initialState = {
 export const gameReducer = (state = initialState, action) => {
     switch (action.type) {
         case gameActionTypes.startNewGame: {
+            const newStartCell = generateRandomCell();
+            const [newLabyrinthCells, newDirections] = generateLabyrinthCells(newStartCell);
             return {
-                ...state
+                ...state,
+                startCell: newStartCell,
+                labyrinthCells: newLabyrinthCells,
+                directions: newDirections
             }
         }
         default:

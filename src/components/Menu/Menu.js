@@ -1,7 +1,8 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { neighboringCells } from '../../constants/neighboringCellsSize';
+import { useSelector, useDispatch } from 'react-redux';
 
+import { neighboringCells } from '../../constants/neighboringCellsSize';
+import { startNewGameAction } from '../../store/game/actions';
 import { getDirections, getLabyrinthCells, getStartCell } from '../../store/game/selectors';
 
 import './index.scss';
@@ -12,17 +13,20 @@ const menuStyle = {
 }
 
 const Menu = () => {
+    const dispatch = useDispatch();
+
     const labyrinthCells = useSelector(getLabyrinthCells);
-    const startCell = useSelector(getStartCell);
     const directions = useSelector(getDirections);
-    console.log(labyrinthCells);
-    console.log(directions);
+
+    const newGameHandler = () => {
+        dispatch(startNewGameAction());
+    };
 
     return (
         <div className='menu'>
             <div style={menuStyle} className='menu__labyrinth'>
                 {
-                    labyrinthCells.map((labyrinthCell, index) => {
+                    labyrinthCells.map((_, index) => {
                         return (
                             <div 
                                 className={`menu__labyrinth__cell ${directions[index]}`} 
@@ -33,7 +37,7 @@ const Menu = () => {
                     })
                 }
             </div>
-            <input type='button' value='Далее' />
+            <input className='menu__start' type='button' onClick={ () => newGameHandler() } value='Далее' />
         </div>
     )
 };

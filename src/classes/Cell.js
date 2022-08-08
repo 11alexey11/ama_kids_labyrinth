@@ -64,8 +64,6 @@ export class Cell {
         const diffX = neighboringCell.x - this.x;
         const diffY = neighboringCell.y - this.y;
 
-        console.log(this, neighboringCell)
-
         if (diffX === 0 && diffY === 1) {
             return direction.right;
         } else
