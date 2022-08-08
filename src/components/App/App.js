@@ -1,10 +1,16 @@
 import React from 'react';
+import { Provider } from 'react-redux';
+
+import { store } from '../../store';
+import { Field } from '../Field';
 
 import './index.scss';
 
 const App = () => {
     return (
-        <div>Я тут</div>
+        <Provider store={store}>
+            <Field />
+        </Provider>
     )
 };
 

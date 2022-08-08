@@ -1,0 +1,9 @@
+@import '../../common/variables.scss';
+
+.cell {
+    width: 10rem;
+    height: 10rem;
+    margin: 0.25rem;
+    border-radius: 1rem;
+    background-color: $purple;
+}

@@ -1,0 +1,1 @@
+export const getFieldCells = (state) => state.game.cells;
