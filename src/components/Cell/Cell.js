@@ -4,9 +4,9 @@ import startPng from '../../assets/start.png';
 
 import './index.scss';
 
-const Cell = ({ cell, startCell, clickCellHandler, isDisabledCellClick }) => {
+const Cell = ({ cell, lastLabyrinthCell, startCell, clickCellHandler, isDisabledCellClick }) => {
     return (
-        <div disabled={isDisabledCellClick} onClick={ () => clickCellHandler(cell) } className={`cell ${isDisabledCellClick ? 'disabled' : ''}`}>
+        <div disabled={isDisabledCellClick} onClick={ () => clickCellHandler(cell, lastLabyrinthCell) } className={`cell ${isDisabledCellClick ? 'disabled' : ''}`}>
             {
                 cell.x === startCell.x && cell.y === startCell.y &&
                 (

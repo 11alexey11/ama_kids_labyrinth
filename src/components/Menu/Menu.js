@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { nanoid } from 'nanoid';
+
 
 import { neighboringCells } from '../../constants/neighboringCellsSize';
 import { setDisabledCellClick, startNewGameAction } from '../../store/game/actions';
-import { getDirections, getLabyrinthCells } from '../../store/game/selectors';
+import { getDirections, getIsEndGame, getLabyrinthCells } from '../../store/game/selectors';
+import { generateIds } from '../../utils/generateIds';
 
 import './index.scss';
 
@@ -14,18 +15,21 @@ const menuStyle = {
 }
 
 const Menu = () => {
+    const [ids, setIds] = useState(generateIds());
+
     const dispatch = useDispatch();
 
     const labyrinthCells = useSelector(getLabyrinthCells);
     const directions = useSelector(getDirections);
+    const isEndGame = useSelector(getIsEndGame);
 
     useEffect(() => {
         setTimeout(() => dispatch(setDisabledCellClick(false)), 5000);
-    }, [labyrinthCells]);
+    });
 
-    const getId = () => {
-        return nanoid();
-    }
+    useEffect(() => {
+        setIds(generateIds)
+    }, [labyrinthCells]);
 
     const newGameHandler = () => {
         dispatch(setDisabledCellClick(true));
@@ -43,14 +47,16 @@ const Menu = () => {
                                     animationDelay: `${index * 0.5}s`
                                 }}
                                 className={`menu__labyrinth__cell ${directions[index]}`} 
-                                key={getId()}>
+                                key={ids[index]}>
                             </div>
                         )
                         
                     })
                 }
             </div>
-            <input className='menu__start' type='button' onClick={ () => newGameHandler() } value='Далее' />
+            {
+                isEndGame && <input className='menu__start' type='button' onClick={ () => newGameHandler() } value='Далее' />
+            }
         </div>
     )
 };

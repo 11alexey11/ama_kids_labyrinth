@@ -11,7 +11,8 @@ const initialState = {
     startCell: startCell,
     labyrinthCells: labyrinthCells,
     directions: directions,
-    isDisabledCellClick: true
+    isDisabledCellClick: true,
+    isEndGame: false
 };
 
 export const gameReducer = (state = initialState, action) => {
@@ -23,13 +24,20 @@ export const gameReducer = (state = initialState, action) => {
                 ...state,
                 startCell: newStartCell,
                 labyrinthCells: newLabyrinthCells,
-                directions: newDirections
+                directions: newDirections,
+                isEndGame: false
             }
         }
         case gameActionTypes.setDisabledCellClick: {
             return {
                 ...state,
                 isDisabledCellClick: action.payload
+            }
+        }
+        case gameActionTypes.setIsEndGame: {
+            return {
+                ...state,
+                isEndGame: true
             }
         }
         default:
