@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types'
 
 import { setDisabledCellClick, setIsEndGame, setIsRightAnswer } from '../../store/game/actions';
 import { getLabyrinthCells } from '../../store/game/selectors';
@@ -52,5 +53,14 @@ const Cell = ({ cell, lastLabyrinthCell, startCell, isDisabledCellClick, isEndGa
         </div>
     )
 };
+
+Cell.propTypes = {
+    cell: PropTypes.object,
+    lastLabyrinthCell: PropTypes.object,
+    startCell: PropTypes.object,
+    isDisabledCellClick: PropTypes.bool,
+    isEndGame: PropTypes.bool,
+    isRightAnswer: PropTypes.bool
+}
 
 export default Cell;
