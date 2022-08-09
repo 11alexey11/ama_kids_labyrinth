@@ -28,7 +28,10 @@ const Menu = () => {
                 {
                     labyrinthCells.map((_, index) => {
                         return (
-                            <div 
+                            <div
+                                style={{
+                                    animationDelay: `${index * 0.5}s`
+                                }}
                                 className={`menu__labyrinth__cell ${directions[index]}`} 
                                 key={index}>
                             </div>

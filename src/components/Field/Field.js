@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 import { fieldSize } from '../../constants/fieldSize';
-import { getFieldCells, getStartCell } from '../../store/game/selectors';
+import { getFieldCells, getLabyrinthCells, getStartCell } from '../../store/game/selectors';
 import { Cell } from '../Cell';
 
 import './index.scss';
@@ -15,11 +15,17 @@ const fieldStyle = {
 const Field = () => {
     const cells = useSelector(getFieldCells);
     const startCell = useSelector(getStartCell);
+    const labyrinthCells = useSelector(getLabyrinthCells);
+    const lastLabyrinthCell = labyrinthCells[labyrinthCells.length - 1];
+
+    const clickCellHandler = (cell) => {
+        console.log(cell);
+    }
 
     return (
         <div className='field' style={fieldStyle}>
             {
-                cells.map((cell, index) => <Cell key={index} cell={cell} startCell={startCell} />)
+                cells.map((cell, index) => <Cell key={index} cell={cell} startCell={startCell} clickCellHandler={ clickCellHandler } />)
             }
         </div>
     );

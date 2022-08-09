@@ -4,9 +4,12 @@ import startPng from '../../assets/start.png';
 
 import './index.scss';
 
-const Cell = ({ cell, startCell }) => {
+const Cell = ({ cell, startCell, clickCellHandler }) => {
+    
+
+
     return (
-        <div className='cell'>
+        <div onClick={ () => clickCellHandler(cell) } className='cell'>
             {
                 cell.x === startCell.x && cell.y === startCell.y &&
                 (
