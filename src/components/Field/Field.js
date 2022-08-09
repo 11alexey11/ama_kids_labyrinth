@@ -1,8 +1,7 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { fieldSize } from '../../constants/fieldSize';
-import { setDisabledCellClick, setIsEndGame, setIsRightAnswer } from '../../store/game/actions';
 import { getFieldCells, getIsDisabledCellClick, getIsEndGame, getIsEndRightAnswer, getLabyrinthCells, getStartCell } from '../../store/game/selectors';
 import { Cell } from '../Cell';
 
@@ -14,8 +13,6 @@ const fieldStyle = {
 }
 
 const Field = () => {
-    const dispatch = useDispatch();
-
     const cells = useSelector(getFieldCells);
     const startCell = useSelector(getStartCell);
     const labyrinthCells = useSelector(getLabyrinthCells);
@@ -23,17 +20,6 @@ const Field = () => {
     const isDisabledCellClick = useSelector(getIsDisabledCellClick);
     const isRightAnswer = useSelector(getIsEndRightAnswer);
     const isEndGame = useSelector(getIsEndGame);
-
-    const clickCellHandler = (cell, lastLabyrinthCell) => {
-        dispatch(setDisabledCellClick(true));
-        dispatch(setIsEndGame());
-
-        if (cell.x === lastLabyrinthCell.x && cell.y === lastLabyrinthCell.y) {
-            dispatch(setIsRightAnswer(true));
-        }
-
-        dispatch(setIsRightAnswer(false));
-    }
 
     return (
         <div className='field' style={fieldStyle}>
@@ -46,7 +32,7 @@ const Field = () => {
                         cell={cell}
                         startCell={startCell}
                         isEndGame={isEndGame}
-                        clickCellHandler={ clickCellHandler } 
+                        isRightAnswer={isRightAnswer}
                     />
                 )
             }

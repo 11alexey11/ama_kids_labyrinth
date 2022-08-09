@@ -12,7 +12,8 @@ const initialState = {
     labyrinthCells: labyrinthCells,
     directions: directions,
     isDisabledCellClick: true,
-    isEndGame: false
+    isEndGame: false,
+    isRightAnswer: false
 };
 
 export const gameReducer = (state = initialState, action) => {
@@ -25,6 +26,7 @@ export const gameReducer = (state = initialState, action) => {
                 startCell: newStartCell,
                 labyrinthCells: newLabyrinthCells,
                 directions: newDirections,
+                isDisabledCellClick: true,
                 isEndGame: false
             }
         }

@@ -25,7 +25,7 @@ const Menu = () => {
 
     useEffect(() => {
         setTimeout(() => dispatch(setDisabledCellClick(false)), 5000);
-    });
+    }, [labyrinthCells]);
 
     useEffect(() => {
         setIds(generateIds)
