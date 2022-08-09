@@ -40,6 +40,12 @@ export const gameReducer = (state = initialState, action) => {
                 isEndGame: true
             }
         }
+        case gameActionTypes.setIsRightAnswer: {
+            return {
+                ...state,
+                isRightAnswer: action.payload
+            }
+        }
         default:
             return state
     }

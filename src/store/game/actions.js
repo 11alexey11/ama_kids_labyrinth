@@ -12,3 +12,8 @@ export const setDisabledCellClick = (isDisabledCellClick) => ({
 export const setIsEndGame = () => ({
     type: gameActionTypes.setIsEndGame
 });
+
+export const setIsRightAnswer = (isRightAnswer) => ({
+    type: gameActionTypes.setIsRightAnswer,
+    payload: isRightAnswer
+});

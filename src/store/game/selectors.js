@@ -9,3 +9,5 @@ export const getDirections = (state) => state.game.directions;
 export const getIsDisabledCellClick = (state) => state.game.isDisabledCellClick;
 
 export const getIsEndGame = (state) => state.game.isEndGame;
+
+export const getIsEndRightAnswer = (state) => state.game.isEndGame && state.game.isRightAnswer;
