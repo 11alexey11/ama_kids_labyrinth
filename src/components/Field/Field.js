@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 import { fieldSize } from '../../constants/fieldSize';
-import { getFieldCells, getLabyrinthCells, getStartCell } from '../../store/game/selectors';
+import { getFieldCells, getIsDisabledCellClick, getLabyrinthCells, getStartCell } from '../../store/game/selectors';
 import { Cell } from '../Cell';
 
 import './index.scss';
@@ -17,6 +17,7 @@ const Field = () => {
     const startCell = useSelector(getStartCell);
     const labyrinthCells = useSelector(getLabyrinthCells);
     const lastLabyrinthCell = labyrinthCells[labyrinthCells.length - 1];
+    const isDisabledCellClick = useSelector(getIsDisabledCellClick);
 
     const clickCellHandler = (cell) => {
         console.log(cell);
@@ -25,7 +26,7 @@ const Field = () => {
     return (
         <div className='field' style={fieldStyle}>
             {
-                cells.map((cell, index) => <Cell key={index} cell={cell} startCell={startCell} clickCellHandler={ clickCellHandler } />)
+                cells.map((cell, index) => <Cell key={index} isDisabledCellClick={isDisabledCellClick} cell={cell} startCell={startCell} clickCellHandler={ clickCellHandler } />)
             }
         </div>
     );

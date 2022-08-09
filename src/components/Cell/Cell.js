@@ -4,12 +4,9 @@ import startPng from '../../assets/start.png';
 
 import './index.scss';
 
-const Cell = ({ cell, startCell, clickCellHandler }) => {
-    
-
-
+const Cell = ({ cell, startCell, clickCellHandler, isDisabledCellClick }) => {
     return (
-        <div onClick={ () => clickCellHandler(cell) } className='cell'>
+        <div disabled={isDisabledCellClick} onClick={ () => clickCellHandler(cell) } className={`cell ${isDisabledCellClick ? 'disabled' : ''}`}>
             {
                 cell.x === startCell.x && cell.y === startCell.y &&
                 (

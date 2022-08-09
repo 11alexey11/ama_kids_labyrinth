@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { nanoid } from 'nanoid';
 
 import { neighboringCells } from '../../constants/neighboringCellsSize';
-import { startNewGameAction } from '../../store/game/actions';
-import { getDirections, getLabyrinthCells, getStartCell } from '../../store/game/selectors';
+import { setDisabledCellClick, startNewGameAction } from '../../store/game/actions';
+import { getDirections, getLabyrinthCells } from '../../store/game/selectors';
 
 import './index.scss';
 
@@ -18,7 +19,16 @@ const Menu = () => {
     const labyrinthCells = useSelector(getLabyrinthCells);
     const directions = useSelector(getDirections);
 
+    useEffect(() => {
+        setTimeout(() => dispatch(setDisabledCellClick(false)), 5000);
+    }, [labyrinthCells]);
+
+    const getId = () => {
+        return nanoid();
+    }
+
     const newGameHandler = () => {
+        dispatch(setDisabledCellClick(true));
         dispatch(startNewGameAction());
     };
 
@@ -33,7 +43,7 @@ const Menu = () => {
                                     animationDelay: `${index * 0.5}s`
                                 }}
                                 className={`menu__labyrinth__cell ${directions[index]}`} 
-                                key={index}>
+                                key={getId()}>
                             </div>
                         )
                         

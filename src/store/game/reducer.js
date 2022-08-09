@@ -10,7 +10,8 @@ const initialState = {
     cells: generateField(),
     startCell: startCell,
     labyrinthCells: labyrinthCells,
-    directions: directions
+    directions: directions,
+    isDisabledCellClick: true
 };
 
 export const gameReducer = (state = initialState, action) => {
@@ -23,6 +24,12 @@ export const gameReducer = (state = initialState, action) => {
                 startCell: newStartCell,
                 labyrinthCells: newLabyrinthCells,
                 directions: newDirections
+            }
+        }
+        case gameActionTypes.setDisabledCellClick: {
+            return {
+                ...state,
+                isDisabledCellClick: action.payload
             }
         }
         default:
